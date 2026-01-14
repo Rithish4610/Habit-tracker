@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Habit</title>
+</head>
+<body>
+    <h2>Add New Habit</h2>
+
+    <form method="post">
+        <input type="text" name="name" placeholder="Habit name" required><br><br>
+        <button type="submit">Add Habit</button>
+    </form>
+
+    {% if error %}
+    <p style="color:red;">{{ error }}</p>
+    {% endif %}
+
+    <p><a href="/">Back to dashboard</a></p>
+</body>
+</html>

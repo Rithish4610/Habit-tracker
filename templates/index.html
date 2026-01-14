@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Habit Tracker</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Habit Tracker</h1>
+        <a href="/add">➕ Add Habit</a>
+
+        {% for habit in habits %}
+        <div class="habit">
+            <div>
+                <h3>{{ habit[1] }}</h3>
+                <p>🔥 Streak: {{ habit[2] }} days</p>
+                <div>
+                {% for i in range(7) %}
+                    🟩
+                {% endfor %}
+                </div>
+            </div>
+            <div class="actions">
+                <a class="done" href="/done/{{ habit[0] }}">✔</a>
+                <a class="delete" href="/delete/{{ habit[0] }}">🗑</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <canvas id="chart" width="400" height="200"></canvas>
+
+    <script>
+    const labels = {{ habits | map(attribute=1) | list | safe }};
+    const streaks = {{ habits | map(attribute=2) | list | safe }};
+
+    new Chart(document.getElementById('chart'), {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Current Streak (Days)',
+                data: streaks,
+                backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                borderRadius: 8
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: { stepSize: 1 }
+                }
+            }
+        }
+    });
+    </script>
+</body>
+</html>
