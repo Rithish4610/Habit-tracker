@@ -1,20 +1,87 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Add Habit</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .card {
+            background: white;
+            padding: 40px 35px 30px 35px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            width: 400px;
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 30px;
+            color: #333;
+        }
+        input[type="text"] {
+            width: 90%;
+            padding: 12px;
+            margin: 10px 0 20px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+        }
+        .btn-main {
+            width: 95%;
+            padding: 12px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 8px;
+            background: #2196F3;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn-main:hover {
+            background: #1976D2;
+        }
+        .btn-secondary {
+            width: 95%;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 8px;
+            background: #e0e0e0;
+            color: #333;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn-secondary:hover {
+            background: #bdbdbd;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-    <h2>Add New Habit</h2>
-
-    <form method="post">
-        <input type="text" name="name" placeholder="Habit name" required><br><br>
-        <button type="submit">Add Habit</button>
-    </form>
-
-    {% if error %}
-    <p style="color:red;">{{ error }}</p>
-    {% endif %}
-
-    <p><a href="/">Back to dashboard</a></p>
+    <div class="card">
+        <h2>Add New Habit</h2>
+        <form method="post" autocomplete="off">
+            <input type="text" name="name" placeholder="Habit name" required><br>
+            <button type="submit" class="btn-main">Add Habit</button>
+        </form>
+        {% if error %}
+        <p class="error">{{ error }}</p>
+        {% endif %}
+        <button class="btn-secondary" onclick="window.location.href='/'">Back to Dashboard</button>
+    </div>
 </body>
 </html>
