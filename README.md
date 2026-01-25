@@ -23,10 +23,3 @@ A **Flask-based web application** to track your daily habits, visualize progress
 
 ---
 
-## **Installation (Local Setup)**
-
-1. **Clone the repository**
-
-```bash
-git clone https://github.com/Rithish4610/Habit-tracker.git
-cd Habit-tracker
